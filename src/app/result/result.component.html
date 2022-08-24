@@ -1,0 +1,39 @@
+<div class="d-block global-bg-glassy-white rounded-3 p-4 my-3">
+    <div class="alert bg-dark my-3" role="alert">
+        <div class="d-flex justify-content-center align-items-center">
+            <div class="d-block text-light">
+                <div class="w-100 my-5 text-center text-light">
+                    <img 
+                        src="{{ responseImage }}" 
+                        width="80" 
+                        class="my-4" 
+                        alt="{{ responseImage }}" 
+                        role="decorative">
+                    <br>
+                    <h4 class="my-2 text-light"> 
+                        {{ responseMessage }}
+                    </h4>
+                    <br>
+                    <p class="text-light">
+                        Total time taken for search :- <br>
+                        {{ totalTimeTaken || 0 }}
+                    </p>
+                    <p class="text-light" *ngIf="planetFound">
+                        Al Falcone was found on planet :- <br>
+                        <img 
+                            src="{{ planetImage }}" 
+                            width="80" 
+                            class="my-4" 
+                            alt="This is a success symbol" 
+                            role="decorative">
+                        <br>
+                        {{ planetFound || 'n/a' }} 
+                    </p>
+                </div>
+                <div class="w-100 my-5 text-center text-light">
+                    <p> {{ resetMessage }} </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

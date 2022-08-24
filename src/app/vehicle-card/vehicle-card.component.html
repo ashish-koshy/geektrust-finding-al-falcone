@@ -1,0 +1,23 @@
+<button class="global-button-cta" (click)="selectVehicle()" *ngIf="vehicle">    
+    <div class="card bg-dark text-light my-2 shadow-lg border-white global-convoy-cta">
+        <div class="card-body">
+            <span class="badge rounded-pill bg-dark text-light my-2">
+                {{ vehicle.name || 'n/a' }}
+            </span>
+            <br>
+            <img [src]="imagePath || ''" width="80" class="my-2" alt="This is a vehicle" role="decorative">
+            <br>
+            <span class="badge rounded-pill bg-dark text-info">
+                {{ vehicle.speed || '0' }} mm/hour
+            </span>
+            <br>
+            <span class="badge rounded-pill bg-dark text-warning">
+                {{ vehicle.max_distance || '0' }} mm
+            </span>
+            <br>
+            <span class="badge rounded-pill bg-dark text-danger">
+                x{{ vehicle?.available_no || '0' }}
+            </span>
+        </div>
+    </div>
+</button>

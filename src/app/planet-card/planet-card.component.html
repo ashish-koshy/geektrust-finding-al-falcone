@@ -1,0 +1,13 @@
+<button class="global-button-cta" (click)="selectPlanet()" *ngIf="planet">
+    <div class="card bg-dark text-light my-2 shadow-lg global-convoy-cta border-light">
+        <div class="card-body">
+            <span class="badge rounded-pill bg-light text-dark my-2">
+                {{ planet.name || 'n/a' }}
+            </span><br>
+            <img [src]="imagePath || ''" width="80" class="my-2" alt="This is a planet" role="decorative"><br>
+            <p class="text-light my-2">
+                {{ planet.distance || '0' }} mm
+            </p>
+        </div>
+    </div>
+</button>

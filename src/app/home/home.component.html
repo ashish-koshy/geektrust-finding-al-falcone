@@ -1,0 +1,55 @@
+
+<app-loader *ngIf="!(falconeSearchState | async)"></app-loader>
+<div class="d-block" *ngIf="(falconeSearchState | async) as search">
+    <div *ngIf="search?.loading" class="global-bg-glassy-white rounded-3">
+        <app-loader></app-loader>
+    </div>
+    <div *ngIf="!search?.loading">
+        <app-error *ngIf="search?.error"></app-error>
+        <div *ngIf="!search?.error" class="my-3">
+            <div class="d-block global-bg-glassy-white rounded-3 p-4 my-3">
+                <div class="alert bg-dark my-3" role="alert">
+                    <div *ngIf="(readyForResults | async)"> 
+                        <button type="button" 
+                                class="btn btn-dark btn-lg my-3 border-white" 
+                                (click)="findFalcone()">
+                            Find Al Falcone!
+                        </button>
+                    </div>
+                    <div *ngIf="!(readyForResults | async)">
+                        <h4 class="my-2 text-light"> &target; Find Al Falcone &target; </h4>
+                        <p class="text-light my-4">
+                            Queen Al Falcone of Falicornia has been hiding from King Shan of Lengaburu.
+                            <br>
+                            King Shan can only afford to send out
+                            <span class="badge rounded-pill bg-secondary"> {{ convoys.length }} </span> 
+                            search convoys at most!
+                        </p>
+                        <br>
+                        <p class="mb-0 text-light">
+                            You need to pick a planet and a vehicle for each of his search convoys below :-
+                        </p>
+                    </div>
+                </div>
+                <div class="card bg-secondary text-light my-2 shadow-lg border-dark">
+                    <div class="card-body">
+                        <div class="d-flex flex-wrap justify-content-center gap-2">
+                            <div *ngFor="let convoy of convoys; let i = index;" 
+                                [attr.id]="pageSections.convoy + (i + 1)">
+                                <app-convoy-card [index]="(i + 1)"></app-convoy-card>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="alert bg-dark my-3" role="alert">
+                    <div> 
+                        <h4 class="my-2 text-light"> 
+                            Total time taken : {{ totalTimeTaken || 0 }}
+                        </h4>
+                    </div>
+                </div>
+            </div>
+            <app-intel></app-intel>
+        </div>
+    </div>    
+</div>

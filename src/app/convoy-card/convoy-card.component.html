@@ -1,0 +1,40 @@
+<button class="global-button-cta" (click)="selectConvoy()">
+    <div class="card bg-dark text-light convoy-card my-2 shadow-lg border-black global-convoy-cta">
+        <div class="card-body" *ngIf="(selection(index) | async) as selection">
+            <div *ngIf="selection?.planet || selection?.vehicle">
+                <h4>
+                    <span class="badge rounded-pill bg-dark text-light my-2 shadow-lg border-white">
+                        #{{ index }}
+                        <img src="assets/images/misc/Convoy.svg"
+                            alt="Add convoy {{ index }}"
+                            width="30" class="mx-3" 
+                            role="decorative"
+                        >
+                    </span>
+                </h4>
+                <div class="d-flex gap-1 justify-content-center align-items-center">
+                    <app-planet-card
+                        *ngIf="selection?.planet" 
+                        [input]="selection.planet">
+                    </app-planet-card>
+                    <app-vehicle-card
+                        *ngIf="selection?.vehicle" 
+                        [input]="selection.vehicle">
+                    </app-vehicle-card>
+                </div>
+            </div>
+            <div *ngIf="!selection?.planet && !selection?.vehicle">
+                <h6 class="card-title">
+                    + Convoy #{{ index }}
+                </h6>
+                <p class="card-text">
+                    <img src="assets/images/misc/Convoy.svg"
+                        alt="Add convoy {{ index }}"
+                        width="80" class="my-2" 
+                        role="decorative"
+                    >
+                </p>
+            </div>
+        </div>
+    </div>
+</button>

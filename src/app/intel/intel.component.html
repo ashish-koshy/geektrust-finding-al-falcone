@@ -1,0 +1,73 @@
+<div class="d-block">
+    <div class="d-block global-bg-glassy-white rounded-3 p-4 my-3" [attr.id]="pageSections.planets">
+        <div class="card bg-dark text-light my-2 shadow-lg">
+            <div class="card-body">
+                <div *ngIf="(planets | async) || [] as availablePlanets">
+                    <div *ngIf="availablePlanets.length > 0">
+                        <h4 class="my-2 text-light"> 
+                            Pick a planet for Convoy #{{ currentConvoyIndex || 1 }}
+                        </h4>
+                        <p class="text-light mt-3 mb-5">
+                            Intel has it that Queen Al Falcone could be found on any one of these planets :-
+                            <br>
+                            (Their respective distances from Lengaburu in 'mega miles' or 'mm'
+                            are listed below them)
+                        </p>
+                        <div class="d-flex flex-wrap justify-content-center align-items-center gap-5">
+                            <div *ngFor="let planet of (planets | async) || []">
+                                <app-planet-card *ngIf="planet" [input]="planet"></app-planet-card>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="availablePlanets.length === 0">
+                        <h5 class="my-2 text-light"> 
+                            No planets available...
+                        </h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="d-block global-bg-glassy-white rounded-3 p-4 my-3" [attr.id]="pageSections.vehicles">
+        <div class="card bg-dark text-light my-2 shadow-lg">
+            <div class="card-body">
+                <div *ngIf="(vehicles | async) || [] as availableVehicles">
+                    <div *ngIf="availableVehicles.length > 0">
+                        <h4 class="my-2 text-light"> 
+                            Pick a vehicle for Convoy #{{ currentConvoyIndex || 1 }}
+                        </h4>
+                        <p class="text-light mt-3 mb-5"> 
+                            You could try finding queen Al Falcone by visiting the chosen planet using any one of the vehicles below :-
+                            <br>
+                            (The  
+                            <span class="badge rounded-pill bg-dark text-info"> 
+                                speed 
+                            </span>, 
+                            <span class="badge rounded-pill bg-dark text-warning"> 
+                                range 
+                            </span> and
+                            <span class="badge rounded-pill bg-dark text-danger"> 
+                                availability 
+                            </span>
+                            of these vehicles are listed below them)
+                        </p>
+                        <div class="d-flex flex-wrap justify-content-center align-items-center gap-5">
+                            <div *ngFor="let vehicle of (vehicles | async) || []">
+                                <app-vehicle-card *ngIf="vehicle" [input]="vehicle"></app-vehicle-card>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="availableVehicles.length === 0">
+                        <h5 class="my-2 text-light"> 
+                            No vehicles available...
+                        </h5>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <button class="btn btn-dark btn-sm my-3 border-white" (click)="focusTop()"> 
+            &ShortUpArrow; Back to top
+        </button>
+    </div>
+</div>

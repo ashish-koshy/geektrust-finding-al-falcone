@@ -1,0 +1,74 @@
+<div class="text-center" [attr.id]="pageSections.top">
+    <header> 
+        <button type="button" 
+                class="btn btn-dark btn-lg my-3 border-white" (click)="reset()">
+            <img src="favicon.ico">
+        </button>
+    </header>
+    <main>
+        <div class="container">
+            <div class="p-1" style="margin-bottom: 10rem">
+                <router-outlet></router-outlet>
+                <a class="btn btn-dark btn-sm my-3 mx-2 border-white" 
+                    href="http://www.ashishkoshy.me/" target="_blank" rel="noopener" role="link"> 
+                    Created by <u> Ashish Koshy </u> &boxbox;
+                </a><br>
+                <a class="btn btn-dark btn-sm my-3 mx-2 border-white" 
+                    href="https://www.svgrepo.com/" target="_blank" rel="noopener" role="link"> 
+                    SVG Repo &boxbox;
+                </a>
+                <a class="btn btn-light btn-sm my-3 mx-2 border-white" 
+                    href="https://github.com/ashish-koshy/geektrust-finding-falcone" target="_blank" rel="noopener" role="link"> 
+                    <img src="assets/images/misc/Github.svg" width="20" alt="Github brand logo"> &boxbox;
+                </a>
+                <a class="btn btn-dark btn-sm my-3 mx-2 border-white" 
+                    href="https://angular.io/about?group=Angular" target="_blank" rel="noopener" role="link"> 
+                    <img src="assets/images/misc/Angular.svg" width="20" alt="Angular brand logo"> &boxbox;
+                </a>
+                <a class="btn btn-dark btn-sm my-3 mx-2 border-white" 
+                    href="https://getbootstrap.com/docs/5.0/about/team/" target="_blank" rel="noopener" role="link"> 
+                    <img src="assets/images/misc/Bootstrap.svg" width="20" alt="Bootstrap brand logo"> &boxbox;
+                </a>
+            </div>
+        </div>
+    </main>
+    <footer> 
+        <div class="d-flex flex-wrap justify-content-center text-light fixed-bottom shadow-lg well global-bg-glassy-black">
+            <div class="dropdown my-2 mx-1">
+                <button 
+                    type="button" 
+                    aria-expanded="false"
+                    data-bs-toggle="dropdown"
+                    class="btn btn-sm btn-dark dropdown-toggle global-link-word-break border-white"
+                >
+                    API - <u>{{ (apiSourceUrl | async) || 'NA' }}</u> 
+                </button>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a 
+                            class="dropdown-item global-cursor-pointer" 
+                            (click)="changeAPISource(apiSourceType.default)"
+                        > 
+                            <u> {{ apiSourceType.default || 'NA' }} </u>
+                        </a>
+                    </li>
+                    <li>
+                        <a 
+                            class="dropdown-item global-cursor-pointer" 
+                            (click)="changeAPISource(apiSourceType.fallback)"
+                        > 
+                            <u> {{ apiSourceType.fallback || 'NA' }} </u>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="my-2 mx-1">
+                <a href="http://www.geektrust.in/finding-falcone" 
+                    target="_blank" rel="noopener" 
+                    class="btn btn-sm btn-secondary global-link-word-break border-dark"> 
+                    View on GeekTrust.com &boxbox;
+                </a>
+            </div>
+        </div>
+    </footer>    
+</div>

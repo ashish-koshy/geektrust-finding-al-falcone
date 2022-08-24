@@ -1,0 +1,104 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import 'bootstrap';
+
+html { 
+    background: url(assets/images/backgrounds/main.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+body {
+    background-color: transparent !important;
+}
+
+.global-loader {
+    position: relative;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    .crosshair {
+        animation-name: floating;
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+        animation-timing-function: ease-in-out;
+        position: absolute;
+        height: 50px;
+        width: 50px;
+        left: 50%;
+        top: 50%;
+    }
+    @keyframes floating {
+        0% { transform: scale(0.5, 0.5); }
+        50%  { transform: scale(1, 1); }
+        100%   { transform: scale(0.5, 0.5); }   
+    }
+}
+
+.global-link-word-break {
+    word-break: break-all;
+}
+
+.global-cursor-pointer {
+    cursor: pointer;
+}
+
+.global-bg-glassy {
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    box-shadow: 0 4px 30px rgb(0 0 0 / 10%);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.global-bg-glassy-black {
+    @extend .global-bg-glassy;
+    background: rgb(0 0 0 / 20%);
+}
+
+.global-bg-glassy-white {
+    @extend .global-bg-glassy;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.placeholder-base {
+    cursor: pointer;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+.global-convoy-cta {
+    @extend .placeholder-base;
+    :hover {
+        @extend .placeholder-base;
+        border-radius: $border-radius;
+        background-color: $secondary;
+    }
+    :active {
+        @extend .placeholder-base;
+        border-radius: $border-radius;
+        background-color: $black;
+        color: $white;
+    }
+    img {  
+        @extend .placeholder-base;
+    }
+}
+
+.global-button-cta {
+    padding: 0;
+    height: 100%;
+    border: none;
+    background-color: transparent;
+}
+
+.global-button-cta:disabled {
+    pointer-events: none;
+}
+
+.global-progress-bar {
+    pointer-events: none;
+}
